@@ -6,4 +6,4 @@
 
 Starter repository for co-op student work, 2018.
 
-GitHub Introduction starring @waharnum!
+**GitHub Introduction starring @waharnum!**

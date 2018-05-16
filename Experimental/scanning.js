@@ -41,21 +41,18 @@ var yPos = 0;
  };
  function animation(){
     if(stage == 1){
+        if(speedCounter === speedLimit){
+           imageSelection++;
+           if(imageSelection >= 4){
+             imageSelection = 1;
+           }
+           speedCounter = 0;
+        }
         if(imageSelection === 1){
             xPos = 50;
         }
         else if(imageSelection === 2){
            xPos = 350;
-        }
-        else if(imageSelection === 3){
-           xPos = 650;
-        }
-        else if(imageSelection >= 4){
-            imageSelection = 1;
-        }
-        if(speedCounter === speedLimit){
-           imageSelection++;
-           speedCounter = 0;
         }
         speedCounter++;
     }
@@ -66,7 +63,7 @@ var yPos = 0;
         if(speedCounter === speedLimit){
             imageSelection++;
             speedCounter = 0;
-            if(imageSelection === 3){
+            if(imageSelection === 4){
                 imageSelection = 1;
             }
          }
@@ -74,21 +71,43 @@ var yPos = 0;
     }
     ctx.drawImage(background,0,yPos);
     if(stage == 1){
-        ctx.drawImage(choice, 50, 50, 300, 300);
-        ctx.drawImage(choice,350, 50, 300, 300);
-        ctx.drawImage(back,650, 50, 300, 300);
-        if (xPos >= 650){
-          ctx.drawImage(hBack,650, 50, 300, 300);
-        }else{
-          ctx.drawImage(hChoice, xPos, 50, 300, 300);
-        }
-    }
-    if(stage == 2){
-      if (xPos >= 650){
+      ctx.drawImage(choice, 50, 50, 300, 300);
+      ctx.drawImage(choice,350, 50, 300, 300);
+      ctx.drawImage(back,650, 50, 300, 300);
+      if (imageSelection === 3){
         ctx.drawImage(hBack,650, 50, 300, 300);
-      }else{
+      }else if(imageSelection <= 2){
         ctx.drawImage(hChoice, xPos, 50, 300, 300);
       }
+    }
+    if(stage == 2){
+      ctx.drawImage(choice, 50, 450, 300, 300);
+      ctx.drawImage(choice,350, 450, 300, 300);
+      ctx.drawImage(back,650, 450, 300, 300);
+      if(speedCounter === speedLimit){
+         imageSelection++;
+         if(imageSelection >= 4){
+           imageSelection = 1;
+         }
+         speedCounter = 0;
+      }
+          if(imageSelection === 1){
+              xPos = 50;
+          }
+          else if(imageSelection === 2){
+             xPos = 350;
+          }
+          else if(imageSelection === 3){
+             xPos = 650;
+          }
+          speedCounter++;
+
+      if (imageSelection === 3){
+        ctx.drawImage(hBack,650, 450, 300, 300);
+      }else{
+        ctx.drawImage(hChoice, xPos, 450, 300, 300);
+      }
+
     }
 //    if(selected === true){
 //        ctx.drawImage (leftArrow, (xPos - 25), 200, 100, 50);
@@ -109,11 +128,17 @@ var yPos = 0;
              stage = 0
            }
 
-         }
-         if(stage == 2){
-            if(selected === false){
-                selected = true;
-            }
+         }else if(stage == 2){
+           if (imageSelection!=3) {
+             stage = 3;
+             imageSelection = 1;
+             speedCounter = 0;
+           }else {
+             stage = 1
+           }
+//            if(selected === false){
+//                selected = true;
+//            }
          }
      }
  }

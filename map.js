@@ -11,6 +11,8 @@ var stage1Choice = 0; //Choice chosen in stage 1
 var stage2Choice = 0; //Choice chosen in stage 2
 var imageSelection = 1; //What image is highlighted
 var xPos = 50;
+var planetXPos = [15, 250, 0];
+var planetYPos = [318, 450, 0];
 
 window.onload = function() {
     //loads images
@@ -46,16 +48,16 @@ function animation() {
     }
     ctx.drawImage(background, 0, 0);//refreshes the background
     if (stage == 1) {
-        ctx.drawImage(planet, 50, 50, 100, 100);
+        ctx.drawImage(planet, planetXPos[0], planetYPos[0], 212, 174);
         ctx.drawImage(planet, 350, 50, 100, 100);
         ctx.drawImage(back, 650, 50, 100, 100);
         if (imageSelection === 3) {
             ctx.drawImage(hBack, 650, 50, 100, 100);
         } else if (imageSelection <= 2) {
-            ctx.drawImage(planetLight, xPos, 50, 100, 100);
+            ctx.drawImage(planetLight, planetXPos[imageSelection-1], planetYPos[imageSelection-1], 212, 174);
         }
     }
-    if (stage == 2) {//similar to stage 1
+    if (stage == 6) {//similar to stage 1// change the 6 into a 2 later
         ctx.drawImage(planet, 50, 450, 100, 100);
         ctx.drawImage(planet, 350, 450, 100, 100);
         ctx.drawImage(back, 650, 450, 100, 100);
@@ -77,7 +79,7 @@ function animation() {
         if (imageSelection === 3) {
             ctx.drawImage(hBack, 650, 450, 100, 100);
         } else {
-            ctx.drawImage(planetLight, xPos, 450, 100, 100);
+            ctx.drawImage(planetLight, planetXPos[imageSelection-1], planetYPos[imageSelection-1], 2120, 1740);
         }
     }
 }

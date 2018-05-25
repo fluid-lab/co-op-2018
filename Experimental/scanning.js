@@ -6,27 +6,24 @@ var speedCounter = 0;
 var speedLimit = 1500 / scanSpeed;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var stage = 1; //stage 1 is the first planet, stage 2 is the second planet
+var stage = 1; //stage 1 is the first choice, stage 2 is the second choice
 var stage1Choice = 0; //Choice chosen in stage 1
 var stage2Choice = 0; //Choice chosen in stage 2
 var imageSelection = 1; //What image is highlighted
 var xPos = 50;
-var planetXPos = [15, 250, 0];
-var planetYPos = [318, 450, 0];
 
 window.onload = function() {
     //loads images
-
+    choice = this.document.getElementById("Choice");
+    hChoice = this.document.getElementById("HChoice");
     background = this.document.getElementById("background");
     back = this.document.getElementById("back");
     hBack = this.document.getElementById("HBack");
-    planet = this.document.getElementById("planet");
-    planetLight = this.document.getElementById("planetLight");
     //draws imaages
     ctx.drawImage(background, 0, 0);
-    ctx.drawImage(planet, 50, 50, 100, 100);
-    ctx.drawImage(planet, 350, 50, 100, 100);
-    ctx.drawImage(back, 650, 50, 100, 100);
+    ctx.drawImage(choice, 50, 50, 300, 300);
+    ctx.drawImage(choice, 350, 50, 300, 300);
+    ctx.drawImage(back, 650, 50, 300, 300);
     //repeats animation at a fixed rate
     var id = setInterval(animation, scanSpeed);
 }
@@ -48,19 +45,19 @@ function animation() {
     }
     ctx.drawImage(background, 0, 0);//refreshes the background
     if (stage == 1) {
-        ctx.drawImage(planet, planetXPos[0], planetYPos[0], 212, 174);
-        ctx.drawImage(planet, 350, 50, 100, 100);
-        ctx.drawImage(back, 650, 50, 100, 100);
+        ctx.drawImage(choice, 50, 50, 300, 300);
+        ctx.drawImage(choice, 350, 50, 300, 300);
+        ctx.drawImage(back, 650, 50, 300, 300);
         if (imageSelection === 3) {
-            ctx.drawImage(hBack, 650, 50, 100, 100);
+            ctx.drawImage(hBack, 650, 50, 300, 300);
         } else if (imageSelection <= 2) {
-            ctx.drawImage(planetLight, planetXPos[imageSelection-1], planetYPos[imageSelection-1], 212, 174);
+            ctx.drawImage(hChoice, xPos, 50, 300, 300);
         }
     }
-    if (stage == 6) {//similar to stage 1// change the 6 into a 2 later
-        ctx.drawImage(planet, 50, 450, 100, 100);
-        ctx.drawImage(planet, 350, 450, 100, 100);
-        ctx.drawImage(back, 650, 450, 100, 100);
+    if (stage == 2) {//similar to stage 1
+        ctx.drawImage(choice, 50, 450, 300, 300);
+        ctx.drawImage(choice, 350, 450, 300, 300);
+        ctx.drawImage(back, 650, 450, 300, 300);
         if (speedCounter === speedLimit) {
             imageSelection++;
             if (imageSelection >= 4) {
@@ -77,9 +74,9 @@ function animation() {
         }
         speedCounter++;
         if (imageSelection === 3) {
-            ctx.drawImage(hBack, 650, 450, 100, 100);
+            ctx.drawImage(hBack, 650, 450, 300, 300);
         } else {
-            ctx.drawImage(planetLight, planetXPos[imageSelection-1], planetYPos[imageSelection-1], 2120, 1740);
+            ctx.drawImage(hChoice, xPos, 450, 300, 300);
         }
     }
 }

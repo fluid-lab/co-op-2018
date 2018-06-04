@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>STS Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,22 +10,46 @@
         canvas {
             border: 1px solid white;
             background-color: grey;
+            margin: auto;
         }
         img{
             visibility: hidden;
+            height: 1px;
+            width: 1px;
+            margin: auto;
         }
     </style>
 </head>
 <body>
-    <canvas id = "myCanvas" width = "1280" height="720"></canvas>
-    <script src = "map.js"></script>
+  <center>
+    <canvas id = "myCanvas" onmouseup = "mouseUp()"></canvas>
+  </center>
+    <script src = "script/map.js"></script>
+    <script src = "script/animation.js"></script>
+    <script src = "script/checkingOptions.js"></script>
+    <script src = "script/drawingLines.js"></script>
+    <script src = "script/onKeyUp.js"></script>
+    <script src = "script/drill.js"></script>
+    <script src = "script/savingImages.js"></script>
+    <script src = "script/checkingResources.js"></script>
+    <script src = "script/findingOptions.js"></script>
+
     <br>
-    <img id = "background" src = "space.png" width = "1" height = "1" alt = "background">
-    <img id = "back" src = "back.png" width = "1" height = "1" alt = "Back">
-    <img id = "HBack" src = "HBack.png" width = "1" height = "1" alt = "Highlighted Back">
-    <img id = "planet" src = "planet.png" width = "1" height = "1" alt = "planet">
-    <img id = "planetLight" src = "planetLight.png" width = "1" height = "1" alt = "planetLight">
-    <img id = "planetPurple" src = "planet.png" width = "1" height = "1" alt = "planet">
-    <img id = "planetLight" src = "planetLight.png" width = "1" height = "1" alt = "planetLight">
+    <img id = "backgroundMap" src = "Images/Map Images/space.png" alt = "background">
+    <img id = "planet" src = "Images/Map Images/planet.png" alt = "planet">
+    <img id = "planetPurple" src = "Images/Map Images/planetPurple.png" alt = "planetPurple">
+    <img id = "highlight" src = "Images/Map Images/Highlight.png" alt = "Highlight of all planets">
+    <img id = "drill" width = "1" height = "1" src = "Images/Encounter Drill [1]/drill.png" alt = "drill">
+    <img id = "background" src = "Images/Encounter Drill [1]/MiningPlanet.png" width = "1" height = "1">
+    <img id = "ScannedDrill" width = "1" height = "1" src = "Images/Encounter Drill [1]/ScannedDrill.png" alt = "Scanned Drill">
+    <img id = "rightArrow" width = "1" height = "1" src = "Images/Encounter Drill [1]/rightArrow.png" alt = "Right Arrow">
+    <img id = "leftArrow" width = "1" height = "1" src = "Images/Encounter Drill [1]/leftArrow.png" alt = "Left Arrow">
+    <img id = "leftArrowScanner" width = "1" height = "1" src = "Images/Encounter Drill [1]/leftArrowScanned.png" alt = "Left Arrow Scanned">
+    <img id = "rightArrowScanner" width = "1" height = "1" src = "Images/Encounter Drill [1]/rightArrowScanned.png" alt = "Right Arrow Scanned">
+    <img id = "fuel" width = "1" height = "1" src = "Images/Encounter Drill [1]/fuel.png" alt = "Fuel Picture">
+    <img id = "copper" width = "1" height = "1" src = "Images/Encounter Drill [1]/copper.png" alt = "Copper Picture">
+    <img id = "stars" width = "1" height = "1" src = "Images/Encounter Drill [1]/stars.png" alt = "Star Picture">
+    <img id = "iron" width = "1" height = "1" src = "Images/Encounter Drill [1]/iron.png" alt = "Iron Picture">
+    <img id = "pointScreen" width = "1" height = "1" src = "Images/Encounter Drill [1]/pointScreen.png" alt = "Point Screen">
 </body>
 </html>

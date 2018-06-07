@@ -266,12 +266,12 @@ function setCanvasSize(){
   var rInnerW = Math.floor(window.innerWidth/16);//Rounds inner width ratio
   var rInnerH = Math.floor(window.innerHeight/9);//Round inner height ratio
   var ratio = 0;
-  if (rInnerW>=rInnerH){
+  if (rInnerW>=rInnerH){//If the innerH is less, it should use the inner height
     ratio = rInnerH;
   } else if (rInnerW<=rInnerH){
     ratio = rInnerW;
   }
-  canvasWidth = ratio*16;
+  canvasWidth = ratio*16;//Ratio by aspect ratio to create the canvas
   canvasHeight = ratio*9;
   ratioWidth = canvasWidth/1280;
   ratioHeight = canvasHeight/720;

@@ -263,10 +263,18 @@ window.onload = function() {
 
 function setCanvasSize(){
   var canvasElement = document.getElementById("myCanvas");
-  canvasWidth = window.screen.availWidth - (window.outerWidth - window.innerWidth);
-  canvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight);
+var rInnerW = Math.floor(window.innerWidth/16);//Rounds inner width ratio
+var rInnerH = Math.floor(window.innerHeight/9);//Round inner height ratio
+var ratio = 0;
+if (rInnerW>=rInnerH){
+  ratio = rInnerH;
+} else if (rInnerW<=rInnerH){
+  ratio = rInnerW;
+}
+canvasWidth = ratio*16;
+canvasHeight = ratio*9;
   ratioWidth = canvasWidth/1280;
   ratioHeight = canvasHeight/720;
-  canvasElement.height = canvasHeight - 40;
-  canvasElement.width = canvasWidth - 30;
+  canvasElement.height = canvasHeight;// - 40;
+  canvasElement.width = canvasWidth;// - 30;
 }

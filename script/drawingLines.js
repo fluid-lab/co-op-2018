@@ -105,7 +105,8 @@ function drawCircle(){
 }
 
 function drawInventory() {
-  ctx.font="40pt Calibri";
+  ctx.font= (40*ratioWidth) + "pt Calibri";
+  ctx.fillStyle= "#FFFFFF";
   ctx.fillText(inventory.copper, ratioWidth*7*16,ratioHeight*75*9);
   ctx.fillText(inventory.fuel, ratioWidth*14*16,ratioHeight*75*9);
   ctx.fillText(inventory.iron, ratioWidth*21*16,ratioHeight*75*9);

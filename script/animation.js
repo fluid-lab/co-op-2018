@@ -15,11 +15,11 @@ function animation(){
       drawHighlight(); //draws the highlighted line
       drawCircle();
       drawHighlightCircle();
+      drawInventory();
       arrayCounterOfPlanets = 0; //type of planet
     }
   }
   if(stage === "drill"){
-    if(stage === "drill"){
         if(stop === false){ //if the scanner for the drill is false then the image selection will scan a ceritan drill
             if(imageSelection === 1){ //if image scan is 1 then the first drill will be selected
                 xPosDrill = 100 * ratioWidth;//the first still is at a x position of 100ox
@@ -139,7 +139,6 @@ function animation(){
             ctx.drawImage (iron, 50 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfIron, 150 * ratioWidth, 60 * ratioHeight);
         }
-    }
   }
   if(stage === "back"){
     ctx.drawImage(backgroundMap, 0, 0);

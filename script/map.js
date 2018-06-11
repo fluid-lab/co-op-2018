@@ -10,9 +10,9 @@ var ctx = canvas.getContext("2d");
 var stage = "map"; //the different stages
 
 var inventory = {
+  copper: 0,
   fuel: 0,
   iron: 0,
-  copper: 0,
   star: 0
 };
 

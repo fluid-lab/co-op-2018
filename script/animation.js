@@ -133,7 +133,7 @@ function animation(){
             ctx.drawImage(fuel, 1000 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfFuel, 1100 * ratioWidth,60 * ratioHeight);
             ctx.drawImage(copper, 750 * ratioWidth, 10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfCopper, 850 * ratioWidth, 60);
+            ctx.fillText (numOfCopper, 850 * ratioWidth, 60 * ratioHeight);
             ctx.drawImage (stars, 400 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfStars, 500 * ratioWidth, 60 * ratioHeight);
             ctx.drawImage (iron, 50 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);

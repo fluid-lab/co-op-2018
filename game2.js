@@ -3,7 +3,8 @@ var canvasHeight = 720; //the height of the canvas
 var scanSpeed = 1000;
 var canvas = document.getElementById("myCanvas"); //variable for canvas
 var ctx = canvas.getContext("2d");
-var selection = 1;
+var selection = 1; //the selection of the image in during the game
+var menuSelection = 1; //selection of the image in  the prefrence bar
 var scan = true; //if the options are being scanned then the value of scan will be true
 //variables to store images
 var background;
@@ -22,7 +23,7 @@ var minus;
 var scannedPlus;
 var scannedMinus;
 //variable for weather or not the menu was selected, if yes then the menu will be presented
-var menuSelected = false; 
+var menuSelected = false;
 //variable tp store the imgaes in
 var fuel;
 var iron;
@@ -53,6 +54,7 @@ var numOfIron = 10;
 var numOfStars = 10;
 var numOfCopper = 10;
 
+console.log (scanSpeed);
 var id = setInterval(animation, scanSpeed);
 
 //the folowung is done when the widow is being loaded
@@ -182,9 +184,9 @@ function loadImage() {
     menu = this.document.getElementById("menu");
     scannedMenu = this.document.getElementById("scannedMenu");
     dropDown = this.document.getElementById ("dropDown");
-    plus = this.document.getElementById ("plus"); 
+    plus = this.document.getElementById ("plus");
     minus = this.document.getElementById("minus");
-    scannedPlus = this.document.getElementById ("scannedPlus"); 
+    scannedPlus = this.document.getElementById ("scannedPlus");
     scannedMinus = this.document.getElementById ("scannedMinus");
 }
 
@@ -245,20 +247,29 @@ function prefrenceBar(){
   var x  = 0;
   var y = -10;
 
-  ctx.drawImage (dropDown, 0, (y + 10), 1280, 300); 
-  ctx.drawImage (plus, 200, 150, 50,50); 
-  ctx.fillText (scanSpeed, 80, 150); 
+  ctx.drawImage (dropDown, 0, (y + 10), 1280, 300);
+  ctx.drawImage (plus, 200, 150, 50,50);
+  ctx.fillText (scanSpeed, 80, 150);
   ctx.drawImage (minus, 50, 150, 50, 50);
+  ctx.drawImage (menu, 1200,200,50,50);
 }
-
+var menuButton;
 function changeScanSpeed(){
   if (selection === 1){
-    ctx.drawImage (minus, 50, 150, 50, 50);
-    ctx.drawImage (scannedPlus, 200, 150, 50,50); 
+    //ctx.drawImage (minus, 50, 150, 50, 50);
+    ctx.drawImage (menu, 1200,200,50,50)
+    ctx.drawImage (scannedPlus, 200, 150, 50,50);
+    menuButton = 'increase';
+  }
+  else if (selection === 2) {
+    ctx.drawImage (plus, 200, 150, 50,50);
+    ctx.drawImage (scannedMinus, 50, 150, 50, 50);
+    menuButton = 'decrease';
   }
   else {
-    ctx.drawImage (plus, 200, 150, 50,50); 
-    ctx.drawImage (scannedMinus, 50, 150, 50, 50);
+    ctx.drawImage (minus, 50, 150, 50, 50);
+    ctx.drawImage (scannedMenu, 1200,200,50,50);
+    menuButton = 'goBackToGame';
   }
 }
 
@@ -354,11 +365,16 @@ window.onkeyup = function(e) { //takes the spacebar as a key input
             console.log(numOfCopper)
             console.log(numOfFuel);
             if (menuSelected === true){
-              if (selection === 1) {
+              if (menuButton === 'increase') {
                 scanSpeed += 10;
+                //console.log (scanSpeed);
               }
-              else {
-                scanSpeed -= 10; 
+              else if (menuButton === 'decrease') {
+                scanSpeed -= 10;
+                //console.log (scanSpeed);
+              }
+              else if (menuButton === 'goBackToGame'){
+                menuSelected = false;
               }
             }
         }

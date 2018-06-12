@@ -355,10 +355,12 @@ window.onkeyup = function(e) { //takes the spacebar as a key input
                 }
             }
             else {
-              scan = false;
               if (button === 'menu'){
                 menuSelected = true;
                 scan = true;
+              }
+              else {
+                scan = false;
               }
             }
             console.log(numOfIron);

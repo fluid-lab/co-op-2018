@@ -2,7 +2,7 @@
 function drawHighlight(){
     //if its the first imageHighlighted then draws from current circles to the new circle
     ctx.beginPath();
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 8*ratioWidth;
     ctx.strokeStyle="#FFFF00"; //colour yellow
     if(randomX[currentX + 1] === undefined){
 
@@ -26,6 +26,7 @@ function drawHighlight(){
 
 //drawing the highlighted circles
 function drawHighlightCircle(){
+  radius = 15*ratioWidth;
   ctx.beginPath();
   ctx.fillStyle = 'yellow';
   if(yHighlited[imageHighlighted] != undefined && randomX[currentX + 1] != undefined){
@@ -71,7 +72,7 @@ function drawLines(){
 
 function drawingSpecificLines(x,y){
   ctx.beginPath();
-  ctx.lineWidth = 8;
+  ctx.lineWidth = 8*ratioWidth;
   ctx.strokeStyle="#FFFFFF";
   ctx.moveTo(xPosOfCircle[x] + randomX[x][y],yPosOfCircle[x][y]); //starts from the circle its looking at
   ctx.lineTo(xPosOfCircle[x + 1] + randomX[x + 1][specificY],yPosOfCircle[x + 1][specificY]); //draws to the circle its connecting too

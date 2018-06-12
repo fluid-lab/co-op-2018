@@ -25,7 +25,7 @@ var sizeOfBackgroundHeight = canvasHeight;
 //NOTE: This is all the variables for the MAP stage
 //selecting the x and y position of the circles and the amount of circles
 var numberOfCircles = [0,1,2,1,0,1,1,1,1,0]; //number of circles in each row. If the number is 0, then it is a planet.
-var radius = 15; //the radius of the circle
+var radius = 15*ratioWidth; //the radius of the circle
 var xPosOfCircle = []; //xposition of the circle
 var yPosOfCircle = []; //the y position of the circle
 var totalAmountOfCircles; //total amount of circles used to set the 2d array of y pos of circle

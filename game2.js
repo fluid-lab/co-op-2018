@@ -234,9 +234,6 @@ function animation() {
           prefrenceBar();
           changeScanSpeed();
         }
-        /*if (menuSelected === false && menuButton === 'goBackToHome'){
-            ctx.drawImage (background, 0, 0, 1280, 720); 
-        }*/
     }
 }
 
@@ -279,14 +276,14 @@ function prefrenceBar(){
 }
 var menuButton;
 function changeScanSpeed(){
-  if (selection === 1){
+  if (menuSelection === 1){
     //ctx.drawImage (minus, 50, 150, 50, 50);
     ctx.drawImage (menu, 1200,200,50,50)
     ctx.drawImage (scannedPlus, 200, 150, 50,50);
     menuSelection = 2;
     menuButton = 'increase';
   }
-  else if (selection === 2) {
+  else if (menuSelection === 2) {
     ctx.drawImage (plus, 200, 150, 50,50);
     ctx.drawImage (scannedMinus, 50, 150, 50, 50);
     menuSelection = 3; 
@@ -303,7 +300,8 @@ function changeScanSpeed(){
 window.onkeyup = function(e) { //takes the spacebar as a key input
     if (scan === true) {
         if (e.key === " ") {
-            if (button === 'yes') { //when the selection of the image is on the yes button then the scanning will stop
+            console.log (button);
+            if (button === 'yes' && menuButton != 'button') { //when the selection of the image is on the yes button then the scanning will stop
                 scan = false;
                 for (var i = 0; i < randNum; i++) {
                     if (randNum === 1) { //if only one item will be printed
@@ -386,17 +384,17 @@ window.onkeyup = function(e) { //takes the spacebar as a key input
                 menuSelected = true;
                 scan = true;
               }
-              else {
+              else if (button === 'no') {
                 scan = false;
               }
               if (menuSelected === true){
                 if (menuButton === 'increase') {
-                  scanSpeed += 10;
+                  scanSpeed = scanSpeed / 2;
                   id = setInterval(animation, scanSpeed);
                   console.log (scanSpeed); 
                 }
                 else if (menuButton === 'decrease') {
-                  scanSpeed -= 10;
+                  scanSpeed = scanSpeed * 2;
                   id = setInterval(animation, scanSpeed);
                   console.log (scanSpeed); 
                 }

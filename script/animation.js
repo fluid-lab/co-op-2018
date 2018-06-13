@@ -93,7 +93,7 @@ function animation(){
             ctx.drawImage(drill, 100 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
             ctx.drawImage(drill, 400 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
             ctx.drawImage(drill, 700 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
-            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, 68, 300 * ratioWidth, 300 * ratioHeight);
+            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, yPosDrill + (ratioHeight*20), 300 * ratioWidth, 300 * ratioHeight);
         }
         if(down === true){ //if down is true
             ctx.drawImage(drill,xPosDrill,yPosDrill,300 * ratioWidth,300 * ratioHeight); //draw the drill animation onto the canvas
@@ -127,7 +127,7 @@ function animation(){
             }
         }
         //put all the points in the right corner of the canvas
-        ctx.font = "40pt Calibri";
+        ctx.font = (40*ratioWidth) + "pt Calibri";
         //this statement prints the points the player has collected
         if(showSign === false){
             ctx.drawImage(fuel, 1000 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);

@@ -62,105 +62,108 @@ window.onload = function() {
     //loads images
     loadImage();
     loadResources();
-    ctx.drawImage(background, 0, 0, 1280, 720); //draws the background
-    printResources(); //print the resouces onto the screen
-    //prints image of the alien that is asking for the resources, and a speech bubble
-    ctx.drawImage(avatar, 800, 350, 200, 200);
-    ctx.drawImage(speechBubble, 750, 200, 500, 150);
-
+    printGame ();
     ctx.font = "40pt Calibri";
     for (var i = 0; i < randNum; i++) {
-        if (randNum === 1) { //if only one item will be printed
-            if (rand === 1) { //if rand is 1 then the item displayed is iron
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(iron, xpos1, 200, 100, 100);
-            } else if (rand == 2) { //if rand is 2 then the item displayed is copper
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(copper, xpos1, 200, 100, 100);
-            } else if (rand == 3) { //if rand is 3 then the item displayed is fuel
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(fuel, xpos1, 200, 100, 100);
+        randResources();
+    }
+    printNumOfResources ();
+};
+
+function randResources (){
+    if (randNum === 1) { //if only one item will be printed
+        if (rand === 1) { //if rand is 1 then the item displayed is iron
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(iron, xpos1, 200, 100, 100);
+        } else if (rand == 2) { //if rand is 2 then the item displayed is copper
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(copper, xpos1, 200, 100, 100);
+        } else if (rand == 3) { //if rand is 3 then the item displayed is fuel
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(fuel, xpos1, 200, 100, 100);
+        }
+    } else if (randNum === 2) { //2 items will be printed
+        if (rand === 1) { //if the first resource is iron
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(iron, xpos1, 200, 100, 100);
+            if (rand2 === 1) { //if rand2 is 1 then the second item is copper
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos2, 200, 100, 100);
+            } else if (rand2 === 2) { //if rand2 is 2 then the second item is fuel
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(fuel, xpos2, 200, 100, 100);
             }
-        } else if (randNum === 2) { //2 items will be printed
-            if (rand === 1) { //if the first resource is iron
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(iron, xpos1, 200, 100, 100);
-                if (rand2 === 1) { //if rand2 is 1 then the second item is copper
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos2, 200, 100, 100);
-                } else if (rand2 === 2) { //if rand2 is 2 then the second item is fuel
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(fuel, xpos2, 200, 100, 100);
-                }
-            } else if (rand === 2) { //the first item is copper
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(copper, xpos1, 200, 100, 100);
-                if (rand2 === 1) { // if rand2 2 is 1 then the second resoruce is iron
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos2, 200, 100, 100);
-                } else if (rand2 === 2) { // if rnad2 is 2 is the second item is fuel
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(fuel, xpos2, 200, 100, 100);
-                }
-            } else if (rand == 3) { // the fisrt item is fuel
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(fuel, xpos1, 200, 100, 100);
-                if (rand2 == 1) { //if rand2 is 1 then the seocnd item is copper
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos2, 200, 100, 100);
-                } else if (rand2 == 2) { //if rand2 is 2 then the second item is iron
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos2, 200, 100, 100);
-                }
+        } else if (rand === 2) { //the first item is copper
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(copper, xpos1, 200, 100, 100);
+            if (rand2 === 1) { // if rand2 2 is 1 then the second resoruce is iron
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos2, 200, 100, 100);
+            } else if (rand2 === 2) { // if rnad2 is 2 is the second item is fuel
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(fuel, xpos2, 200, 100, 100);
             }
-        } else if (randNum === 3) { //if 3 items will be printed
-            if (rand == 1) { //if the first item is iron
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(iron, xpos1, 200, 100, 100);
-                if (rand2 == 1) { //if rand2 is 2 then the second item is copper and the third is fuel
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos2, 200, 100, 100);
-                    ctx.drawImage(fuel, xpos3, 200, 100, 100);
-                } else if (rand2 == 2) { //if rand2 is 2 then the second item is fule and the third is copper
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(fuel, xpos2, 200, 100, 100);
-                    randAmount[2] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos3, 200, 100, 100);
-                }
-            } else if (rand == 2) { //if the fisrt item is copper
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(copper, xpos1, 200, 100, 100);
-                if (rand2 == 1) { //if rand2 is 1 then the second item is iron and third is fuel
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos2, 200, 100, 100);
-                    randAmount[2] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(fuel, xpos3, 200, 100, 100);
-                } else if (rand2 == 2) { //if rand2 is 2 then second item is fuel and the third is iron
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(fuel, xpos2, 200, 100, 100);
-                    randAmount[2] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos3, 200, 100, 100);
-                }
-            } else if (rand == 3) { // if the first resource is fuel
-                randAmount[0] = Math.floor(Math.random() * 7) + 3;
-                ctx.drawImage(fuel, xpos1, 200, 100, 100);
-                if (rand2 == 1) { // then if rand2 is 1 then the second resource is iron and the third is copper
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos2, 200, 100, 100);
-                    randAmount[2] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos3, 200, 100, 100);
-                } else if (rand2 == 2) { //if rand2 is 2 then the second encounter is copper and the third is iron
-                    randAmount[1] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(copper, xpos2, 200, 100, 100);
-                    randAmount[2] = Math.floor(Math.random() * 7) + 3;
-                    ctx.drawImage(iron, xpos3, 200, 100, 100);
-                }
-            }
-            if (randAmount[2] === 0) { // if the second resource is 0 while 3 resources are being printed re calculate the ammount asked for
-                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+        } else if (rand == 3) { // the fisrt item is fuel
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(fuel, xpos1, 200, 100, 100);
+            if (rand2 == 1) { //if rand2 is 1 then the seocnd item is copper
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos2, 200, 100, 100);
+            } else if (rand2 == 2) { //if rand2 is 2 then the second item is iron
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos2, 200, 100, 100);
             }
         }
+    } else if (randNum === 3) { //if 3 items will be printed
+        if (rand == 1) { //if the first item is iron
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(iron, xpos1, 200, 100, 100);
+            if (rand2 == 1) { //if rand2 is 2 then the second item is copper and the third is fuel
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos2, 200, 100, 100);
+                ctx.drawImage(fuel, xpos3, 200, 100, 100);
+            } else if (rand2 == 2) { //if rand2 is 2 then the second item is fule and the third is copper
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(fuel, xpos2, 200, 100, 100);
+                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos3, 200, 100, 100);
+            }
+        } else if (rand == 2) { //if the fisrt item is copper
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(copper, xpos1, 200, 100, 100);
+            if (rand2 == 1) { //if rand2 is 1 then the second item is iron and third is fuel
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos2, 200, 100, 100);
+                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(fuel, xpos3, 200, 100, 100);
+            } else if (rand2 == 2) { //if rand2 is 2 then second item is fuel and the third is iron
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(fuel, xpos2, 200, 100, 100);
+                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos3, 200, 100, 100);
+            }
+        } else if (rand == 3) { // if the first resource is fuel
+            randAmount[0] = Math.floor(Math.random() * 7) + 3;
+            ctx.drawImage(fuel, xpos1, 200, 100, 100);
+            if (rand2 == 1) { // then if rand2 is 1 then the second resource is iron and the third is copper
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos2, 200, 100, 100);
+                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos3, 200, 100, 100);
+            } else if (rand2 == 2) { //if rand2 is 2 then the second encounter is copper and the third is iron
+                randAmount[1] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(copper, xpos2, 200, 100, 100);
+                randAmount[2] = Math.floor(Math.random() * 7) + 3;
+                ctx.drawImage(iron, xpos3, 200, 100, 100);
+            }
+        }
+        if (randAmount[2] === 0) { // if the second resource is 0 while 3 resources are being printed re calculate the ammount asked for
+            randAmount[2] = Math.floor(Math.random() * 7) + 3;
+        }
     }
+}
+
+function printNumOfResources (){
     //prints the number of items the
     ctx.fillText(randAmount[0], (xpos1 + 80), 260);
     if (randNum === 2 || randNum === 3) {
@@ -171,7 +174,7 @@ window.onload = function() {
     }
     console.log(randNum);
     console.log(randAmount);
-};
+}
 
 function loadImage() {
     background = this.document.getElementById("background");
@@ -197,6 +200,14 @@ function loadResources() {
     stars = this.document.getElementById("stars");
 }
 
+function printGame(){
+    ctx.drawImage(background, 0, 0, 1280, 720); //draws the background
+    printResources(); //print the resouces onto the screen
+    //prints image of the alien that is asking for the resources, and a speech bubble
+    ctx.drawImage(avatar, 800, 350, 200, 200);
+    ctx.drawImage(speechBubble, 750, 200, 500, 150);
+}
+
 //function prints the number of resources the player currently has left
 function printResources() {
     ctx.drawImage(fuel, 1000, -10, 100, 100);
@@ -210,12 +221,22 @@ function animation() {
         ctx.drawImage(yesButton, 50, 150, 200, 150);
         ctx.drawImage(noButton, 50, 350, 200, 150);
         ctx.drawImage (menu, 1220, 10, 50, 50);
+        console.log (menuButton); 
+        if (menuSelected === false && menuButton === 'goBackToGame'){
+            ctx.drawImage (background, 0, 0, 1280, 720); 
+            printGame ();
+            randResources ();
+            printNumOfResources();
+        }
         request();
 
         if (menuSelected === true){
           prefrenceBar();
           changeScanSpeed();
         }
+        /*if (menuSelected === false && menuButton === 'goBackToHome'){
+            ctx.drawImage (background, 0, 0, 1280, 720); 
+        }*/
     }
 }
 
@@ -223,6 +244,7 @@ var button;
 function request() {
     if (scan === true) {
         if (selection === 1) {
+            ctx.drawImage (menu, 1220, 10, 50, 50);
             ctx.drawImage(noButton, 50, 350, 200, 150);
             ctx.drawImage(scannedYesButton, 50, 150, 200, 150);
             selection = 2;
@@ -235,9 +257,11 @@ function request() {
             button = 'no';
         }
         else if (selection === 3)  {
-          ctx.drawImage (scannedMenu, 1220, 10, 50, 50);
-          selection = 1;
-          button = 'menu';
+            ctx.drawImage(yesButton, 50, 150, 200, 150);
+            ctx.drawImage(noButton, 50, 350, 200, 150);
+            ctx.drawImage (scannedMenu, 1220, 10, 50, 50);
+            selection = 1;
+            button = 'menu';
         }
     }
 }
@@ -259,16 +283,19 @@ function changeScanSpeed(){
     //ctx.drawImage (minus, 50, 150, 50, 50);
     ctx.drawImage (menu, 1200,200,50,50)
     ctx.drawImage (scannedPlus, 200, 150, 50,50);
+    menuSelection = 2;
     menuButton = 'increase';
   }
   else if (selection === 2) {
     ctx.drawImage (plus, 200, 150, 50,50);
     ctx.drawImage (scannedMinus, 50, 150, 50, 50);
+    menuSelection = 3; 
     menuButton = 'decrease';
   }
   else {
     ctx.drawImage (minus, 50, 150, 50, 50);
     ctx.drawImage (scannedMenu, 1200,200,50,50);
+    menuSelection = 1;
     menuButton = 'goBackToGame';
   }
 }
@@ -362,23 +389,28 @@ window.onkeyup = function(e) { //takes the spacebar as a key input
               else {
                 scan = false;
               }
+              if (menuSelected === true){
+                if (menuButton === 'increase') {
+                  scanSpeed += 10;
+                  id = setInterval(animation, scanSpeed);
+                  console.log (scanSpeed); 
+                }
+                else if (menuButton === 'decrease') {
+                  scanSpeed -= 10;
+                  id = setInterval(animation, scanSpeed);
+                  console.log (scanSpeed); 
+                }
+                else if (menuButton === 'goBackToGame'){
+                  menuSelected = false;
+                  scan = true; 
+                }
+                //id = setInterval(animation, scanSpeed);
+                //console.log (scanSpeed); 
+              }
             }
             console.log(numOfIron);
             console.log(numOfCopper)
             console.log(numOfFuel);
-            if (menuSelected === true){
-              if (menuButton === 'increase') {
-                scanSpeed += 10;
-                //console.log (scanSpeed);
-              }
-              else if (menuButton === 'decrease') {
-                scanSpeed -= 10;
-                //console.log (scanSpeed);
-              }
-              else if (menuButton === 'goBackToGame'){
-                menuSelected = false;
-              }
-            }
         }
     }
 }

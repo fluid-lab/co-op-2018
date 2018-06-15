@@ -2,7 +2,7 @@
 function drawHighlight(){
     //if its the first imageHighlighted then draws from current circles to the new circle
     ctx.beginPath();
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 8*ratioWidth;
     ctx.strokeStyle="#FFFF00"; //colour yellow
     if(randomX[currentX + 1] === undefined){
 
@@ -26,6 +26,7 @@ function drawHighlight(){
 
 //drawing the highlighted circles
 function drawHighlightCircle(){
+  radius = 15*ratioWidth;
   ctx.beginPath();
   ctx.fillStyle = 'yellow';
   if(yHighlited[imageHighlighted] != undefined && randomX[currentX + 1] != undefined){
@@ -71,7 +72,7 @@ function drawLines(){
 
 function drawingSpecificLines(x,y){
   ctx.beginPath();
-  ctx.lineWidth = 8;
+  ctx.lineWidth = 8*ratioWidth;
   ctx.strokeStyle="#FFFFFF";
   ctx.moveTo(xPosOfCircle[x] + randomX[x][y],yPosOfCircle[x][y]); //starts from the circle its looking at
   ctx.lineTo(xPosOfCircle[x + 1] + randomX[x + 1][specificY],yPosOfCircle[x + 1][specificY]); //draws to the circle its connecting too
@@ -102,4 +103,17 @@ function drawCircle(){
       }
     }
   }
+}
+
+function drawInventory() {
+  ctx.font= (40*ratioWidth) + "pt Calibri";
+  ctx.fillStyle= "#FFFFFF";
+  ctx.drawImage (copper, ratioWidth*1*16, ratioHeight*69*9, 100 * ratioWidth, 100 * ratioHeight);
+  ctx.drawImage (fuel, ratioWidth*8*16, ratioHeight*69*9, 100 * ratioWidth, 100 * ratioHeight);
+  ctx.drawImage (iron, ratioWidth*15*16, ratioHeight*69*9, 100 * ratioWidth, 100 * ratioHeight);
+  ctx.drawImage (stars, ratioWidth*22*16, ratioHeight*69*9, 100 * ratioWidth, 100 * ratioHeight);
+  ctx.fillText(inventory.copper, ratioWidth*7*16,ratioHeight*75*9);
+  ctx.fillText(inventory.fuel, ratioWidth*14*16,ratioHeight*75*9);
+  ctx.fillText(inventory.iron, ratioWidth*21*16,ratioHeight*75*9);
+  ctx.fillText(inventory.star, ratioWidth*28*16,ratioHeight*75*9);
 }

@@ -15,11 +15,11 @@ function animation(){
       drawHighlight(); //draws the highlighted line
       drawCircle();
       drawHighlightCircle();
+      drawInventory();
       arrayCounterOfPlanets = 0; //type of planet
     }
   }
   if(stage === "drill"){
-    if(stage === "drill"){
         if(stop === false){ //if the scanner for the drill is false then the image selection will scan a ceritan drill
             if(imageSelection === 1){ //if image scan is 1 then the first drill will be selected
                 xPosDrill = 100 * ratioWidth;//the first still is at a x position of 100ox
@@ -93,7 +93,7 @@ function animation(){
             ctx.drawImage(drill, 100 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
             ctx.drawImage(drill, 400 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
             ctx.drawImage(drill, 700 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
-            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, 68, 300 * ratioWidth, 300 * ratioHeight);
+            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, yPosDrill + (ratioHeight*20), 300 * ratioWidth, 300 * ratioHeight);
         }
         if(down === true){ //if down is true
             ctx.drawImage(drill,xPosDrill,yPosDrill,300 * ratioWidth,300 * ratioHeight); //draw the drill animation onto the canvas
@@ -127,19 +127,18 @@ function animation(){
             }
         }
         //put all the points in the right corner of the canvas
-        ctx.font = "40pt Calibri";
+        ctx.font = (40*ratioWidth) + "pt Calibri";
         //this statement prints the points the player has collected
         if(showSign === false){
             ctx.drawImage(fuel, 1000 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfFuel, 1100 * ratioWidth,60 * ratioHeight);
             ctx.drawImage(copper, 750 * ratioWidth, 10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfCopper, 850 * ratioWidth, 60);
+            ctx.fillText (numOfCopper, 850 * ratioWidth, 60 * ratioHeight);
             ctx.drawImage (stars, 400 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfStars, 500 * ratioWidth, 60 * ratioHeight);
             ctx.drawImage (iron, 50 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
             ctx.fillText (numOfIron, 150 * ratioWidth, 60 * ratioHeight);
         }
-    }
   }
   if(stage === "back"){
     ctx.drawImage(backgroundMap, 0, 0);

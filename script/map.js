@@ -10,9 +10,9 @@ var ctx = canvas.getContext("2d");
 var stage = "map"; //the different stages
 
 var inventory = {
+  copper: 0,
   fuel: 0,
   iron: 0,
-  copper: 0,
   star: 0
 };
 
@@ -25,7 +25,7 @@ var sizeOfBackgroundHeight = canvasHeight;
 //NOTE: This is all the variables for the MAP stage
 //selecting the x and y position of the circles and the amount of circles
 var numberOfCircles = [0,1,2,1,0,1,1,1,1,0]; //number of circles in each row. If the number is 0, then it is a planet.
-var radius = 15; //the radius of the circle
+var radius = 15*ratioWidth; //the radius of the circle
 var xPosOfCircle = []; //xposition of the circle
 var yPosOfCircle = []; //the y position of the circle
 var totalAmountOfCircles; //total amount of circles used to set the 2d array of y pos of circle
@@ -263,10 +263,18 @@ window.onload = function() {
 
 function setCanvasSize(){
   var canvasElement = document.getElementById("myCanvas");
-  canvasWidth = window.screen.availWidth - (window.outerWidth - window.innerWidth);
-  canvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight);
+  var rInnerW = Math.floor(window.innerWidth/16);//Rounds inner width ratio
+  var rInnerH = Math.floor(window.innerHeight/9);//Round inner height ratio
+  var ratio = 0;
+  if (rInnerW>=rInnerH){//If the innerH is less, it should use the inner height
+    ratio = rInnerH;
+  } else if (rInnerW<=rInnerH){
+    ratio = rInnerW;
+  }
+  canvasWidth = ratio*16;//Ratio by aspect ratio to create the canvas
+  canvasHeight = ratio*9;
   ratioWidth = canvasWidth/1280;
   ratioHeight = canvasHeight/720;
-  canvasElement.height = canvasHeight - 40;
-  canvasElement.width = canvasWidth - 30;
+  canvasElement.height = canvasHeight;
+  canvasElement.width = canvasWidth;
 }

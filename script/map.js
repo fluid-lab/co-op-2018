@@ -1,27 +1,3 @@
-var canvasWidth = 1280;
-var canvasHeight = 720;
-
-var scanSpeed = 10;
-var speedCounter = 0;
-var speedLimit = 1500 / scanSpeed;
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-
-var stage = "map"; //the different stages
-
-var inventory = {
-  copper: 0,
-  fuel: 0,
-  iron: 0,
-  star: 0
-};
-
-var ratioWidth = canvasWidth/1280;
-var ratioHeight = canvasHeight/720;
-var sizeOfPlanet = 150 * ratioWidth;//size of the planets
-var sizeOfBackgroundWidth = canvasWidth;
-var sizeOfBackgroundHeight = canvasHeight;
-
 //NOTE: This is all the variables for the MAP stage
 //selecting the x and y position of the circles and the amount of circles
 var numberOfCircles = [0,1,2,1,0,1,1,1,1,0]; //number of circles in each row. If the number is 0, then it is a planet.
@@ -101,15 +77,15 @@ function restart(){
       counter = 1;//if its 0, changes to 1
 
     for(var b = 0; b < counter; b++){
-      yPosOfCircle[i][b] = Math.floor(Math.random() * 580 * ratioHeight) + 30 * ratioHeight; //takes a random y position
+      yPosOfCircle[i][b] = Math.floor(Math.random() * 580 * ratioWidth) + 30 * ratioWidth; //takes a random y position
       for(var a = 0; a < b; a++){
-        if(yPosOfCircle[i][a] >= yPosOfCircle[i][b] - 100 * ratioHeight && yPosOfCircle[i][a] <= yPosOfCircle[i][b] + 100 * ratioHeight){
-          yPosOfCircle[i][b] = Math.floor(Math.random() * 580 * ratioHeight) + 10 * ratioHeight; //this for loop is to check if theres any other that overlaps, creating gaps in the y position
+        if(yPosOfCircle[i][a] >= yPosOfCircle[i][b] - 100 * ratioWidth && yPosOfCircle[i][a] <= yPosOfCircle[i][b] + 100 * ratioWidth){
+          yPosOfCircle[i][b] = Math.floor(Math.random() * 580 * ratioWidth) + 10 * ratioWidth; //this for loop is to check if theres any other that overlaps, creating gaps in the y position
           a = -1;
         }
       }
       if(numberOfCircles[i] === 0){
-        yPosOfCircle[i][b] = Math.floor(Math.random()*100 * ratioHeight) + 310 * ratioHeight; //if its 0, then it takes another number closer to the center
+        yPosOfCircle[i][b] = Math.floor(Math.random()*100 * ratioWidth) + 310 * ratioWidth; //if its 0, then it takes another number closer to the center
         if(i === 0 && lastYValue != undefined){
           yPosOfCircle[i][b] = lastYValue;
         }
@@ -274,7 +250,6 @@ function setCanvasSize(){
   canvasWidth = ratio*16;//Ratio by aspect ratio to create the canvas
   canvasHeight = ratio*9;
   ratioWidth = canvasWidth/1280;
-  ratioHeight = canvasHeight/720;
   canvasElement.height = canvasHeight;
   canvasElement.width = canvasWidth;
 }

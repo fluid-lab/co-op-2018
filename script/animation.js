@@ -42,7 +42,7 @@ function animation(){
         if(down === true){ //if down is true
             //as long as the y position of the dills is less then or equal to the bottom of the planet then the drill will be going down at a constant speed of 10px per interval
             if(!(yPos <= bottomOfPlanet)){
-                yPos -= 3 * ratioHeight;
+                yPos -= 3 * ratioWidth;
             }
             //if the position of the drill is at the bottom of the planet then scanning of the arrows stops
             else{
@@ -90,38 +90,38 @@ function animation(){
         }
         if(stop === false){ //if is scanner is off then
             //print on all the drill onto the canvas
-            ctx.drawImage(drill, 100 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
-            ctx.drawImage(drill, 400 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
-            ctx.drawImage(drill, 700 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioHeight);
-            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, yPosDrill + (ratioHeight*20), 300 * ratioWidth, 300 * ratioHeight);
+            ctx.drawImage(drill, 100 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioWidth);
+            ctx.drawImage(drill, 400 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioWidth);
+            ctx.drawImage(drill, 700 * ratioWidth, yPosDrill, 300 * ratioWidth, 300 * ratioWidth);
+            ctx.drawImage(scannedDrill, xPosDrill - 8.5 * ratioWidth, yPosDrill + (ratioWidth*20), 300 * ratioWidth, 300 * ratioWidth);
         }
         if(down === true){ //if down is true
-            ctx.drawImage(drill,xPosDrill,yPosDrill,300 * ratioWidth,300 * ratioHeight); //draw the drill animation onto the canvas
+            ctx.drawImage(drill,xPosDrill,yPosDrill,300 * ratioWidth,300 * ratioWidth); //draw the drill animation onto the canvas
 
-            ctx.drawImage (rightArrow, (xPosDrill + 200 * ratioWidth), 200 * ratioHeight, 100 * ratioWidth, 50 * ratioHeight); //if down is true then print the arrow images onto the canvas
-            ctx.drawImage (leftArrow, (xPosDrill - 25 * ratioWidth), 200 * ratioHeight, 100 * ratioWidth, 50 * ratioHeight); //if down is true then print the left arrow images onto the canvas
+            ctx.drawImage (rightArrow, (xPosDrill + 200 * ratioWidth), 200 * ratioWidth, 100 * ratioWidth, 50 * ratioWidth); //if down is true then print the arrow images onto the canvas
+            ctx.drawImage (leftArrow, (xPosDrill - 25 * ratioWidth), 200 * ratioWidth, 100 * ratioWidth, 50 * ratioWidth); //if down is true then print the left arrow images onto the canvas
 
             if(imageSelection === 2){ // if image selection is 2 then the following will be executed
-                ctx.drawImage (leftArrowScanner, (xPosDrill - 25 * ratioWidth), 200 * ratioHeight, 100 *ratioWidth,50 * ratioHeight); //draw the scanned left arrow onto the canvas
+                ctx.drawImage (leftArrowScanner, (xPosDrill - 25 * ratioWidth), 200 * ratioWidth, 100 *ratioWidth,50 * ratioWidth); //draw the scanned left arrow onto the canvas
             }
             if(imageSelection === 1){ //if image selection is 1 then the following will be executed
-                ctx.drawImage (rightArrowScanner, (xPosDrill + 200 * ratioWidth), 200 * ratioHeight, 100 * ratioWidth, 50 * ratioHeight); //draw the scanned right arrow onto the canvas
+                ctx.drawImage (rightArrowScanner, (xPosDrill + 200 * ratioWidth), 200 * ratioWidth, 100 * ratioWidth, 50 * ratioWidth); //draw the scanned right arrow onto the canvas
             }
         }
         ctx.fillStyle = "black";
         //if the player has reached the bottam of the planet then the point screen will show with th points printed on it
         if(showSign === true){ //150,200
-            ctx.drawImage (pointScreen, 0, slidingBorderY, 1280 * ratioWidth, 1220 * ratioHeight);
-            ctx.drawImage (fuel, 600 * ratioWidth, (slidingBorderY + 30 * ratioHeight), 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfFuel, 700 * ratioWidth, (slidingBorderY + 100 * ratioHeight)); //number of fuels collected by player
-            ctx.drawImage (copper, 350 * ratioWidth, (slidingBorderY + 50 * ratioHeight), 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfCopper, 450 * ratioWidth, (slidingBorderY + 100 * ratioHeight));//number of coppers collected by player
-            ctx.drawImage (stars, 600 * ratioWidth, (slidingBorderY + 130 * ratioHeight), 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfStars, 700 * ratioWidth, (slidingBorderY + 200 * ratioHeight)); //number of stars collected by player
-            ctx.drawImage (iron, 350 * ratioWidth, (slidingBorderY + 130 * ratioHeight), 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfIron, 450 * ratioWidth, (slidingBorderY + 200 * ratioHeight)); //number of irons collected by player
-            if(slidingBorderY <= -10 * ratioHeight){
-                slidingBorderY += 3 * ratioHeight;
+            ctx.drawImage (pointScreen, 0, slidingBorderY, 1280 * ratioWidth, 1220 * ratioWidth);
+            ctx.drawImage (fuel, 600 * ratioWidth, (slidingBorderY + 30 * ratioWidth), 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfFuel, 700 * ratioWidth, (slidingBorderY + 100 * ratioWidth)); //number of fuels collected by player
+            ctx.drawImage (copper, 350 * ratioWidth, (slidingBorderY + 50 * ratioWidth), 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfCopper, 450 * ratioWidth, (slidingBorderY + 100 * ratioWidth));//number of coppers collected by player
+            ctx.drawImage (stars, 600 * ratioWidth, (slidingBorderY + 130 * ratioWidth), 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfStars, 700 * ratioWidth, (slidingBorderY + 200 * ratioWidth)); //number of stars collected by player
+            ctx.drawImage (iron, 350 * ratioWidth, (slidingBorderY + 130 * ratioWidth), 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfIron, 450 * ratioWidth, (slidingBorderY + 200 * ratioWidth)); //number of irons collected by player
+            if(slidingBorderY <= -10 * ratioWidth){
+                slidingBorderY += 3 * ratioWidth;
             }else{
               finishedSign = true;
             }
@@ -130,14 +130,14 @@ function animation(){
         ctx.font = (40*ratioWidth) + "pt Calibri";
         //this statement prints the points the player has collected
         if(showSign === false){
-            ctx.drawImage(fuel, 1000 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfFuel, 1100 * ratioWidth,60 * ratioHeight);
-            ctx.drawImage(copper, 750 * ratioWidth, 10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfCopper, 850 * ratioWidth, 60 * ratioHeight);
-            ctx.drawImage (stars, 400 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfStars, 500 * ratioWidth, 60 * ratioHeight);
-            ctx.drawImage (iron, 50 * ratioWidth, -10 * ratioHeight, 100 * ratioWidth, 100 * ratioHeight);
-            ctx.fillText (numOfIron, 150 * ratioWidth, 60 * ratioHeight);
+            ctx.drawImage(fuel, 1000 * ratioWidth, -10 * ratioWidth, 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfFuel, 1100 * ratioWidth,60 * ratioWidth);
+            ctx.drawImage(copper, 750 * ratioWidth, 10 * ratioWidth, 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfCopper, 850 * ratioWidth, 60 * ratioWidth);
+            ctx.drawImage (stars, 400 * ratioWidth, -10 * ratioWidth, 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfStars, 500 * ratioWidth, 60 * ratioWidth);
+            ctx.drawImage (iron, 50 * ratioWidth, -10 * ratioWidth, 100 * ratioWidth, 100 * ratioWidth);
+            ctx.fillText (numOfIron, 150 * ratioWidth, 60 * ratioWidth);
         }
   }
   if(stage === "back"){

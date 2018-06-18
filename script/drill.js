@@ -61,7 +61,7 @@ function restartDrill(){
 
   sideOfPlanet = "";
 
-  slidingBorderY = -360 * ratioHeight;
+  slidingBorderY = -360 * ratioWidth;
 
 
   imageSelection = 1;
@@ -69,11 +69,11 @@ function restartDrill(){
   yPosDrill = 50 * ratioWidth;
   yPos = 0;
 
-  miningPlanetHeight = (1280/1600) * 3000 * ratioHeight; //height of the planet
+  miningPlanetHeight = (1280/1600) * 3000 * ratioWidth; //height of the planet
   miningPlanetWidth = 1280 * ratioWidth; //the width of the planet
   //the coordinates that locate the bottom of the planet
   //the player can't go past this point
-  bottomOfPlanet = ((1280/1600) * 2100) * -1 * ratioHeight;
+  bottomOfPlanet = ((1280/1600) * 2100) * -1 * ratioWidth;
 
   resourceX = []; //stores the x coodinates of the recouces
   resourceY = []; //stores he y coordinates of the resouces
@@ -99,7 +99,7 @@ function restartDrill(){
      }
      break;
     }
-    resourceY [i] = Math.floor(Math.random()*900 * ratioHeight) + 950 * ratioHeight; //generates a random y coodinate
+    resourceY [i] = Math.floor(Math.random()*900 * ratioWidth) + 950 * ratioWidth; //generates a random y coodinate
     resourcePrinted[i] = Math.floor (Math.random() * 4) + 1; //generates a random number between 1 - 4
     if(resourcePrinted[i] === 4){
       resourcePrinted[i] = Math.floor (Math.random() * 4) + 1;
@@ -110,19 +110,19 @@ function restartDrill(){
  //function that locates the resource, and prints them onto the canvas
  function locateResource (){
    for (var i = 0; i < rand; i++){
-     resourceY[i] = resourceY[i] - 3 * ratioHeight; //this is for when the resources overlap each other
+     resourceY[i] = resourceY[i] - 3 * ratioWidth; //this is for when the resources overlap each other
      if(resourceHidden[i] === "false"){ //if the resrouce is not colledted (the drill has not gone over the object)
        if (resourcePrinted[i] == 1){ //if the resrouce is not colledted (the drill has not gone over the object)
-         ctx.drawImage (iron, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioHeight);
+         ctx.drawImage (iron, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioWidth);
        }
        else if (resourcePrinted [i] == 2){ //if the generated number is 2 then copper is printed in that certian position
-         ctx.drawImage (copper, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioHeight);
+         ctx.drawImage (copper, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioWidth);
        }
        else if (resourcePrinted[i] == 3){ //if the generated number is3 then fuel is printed in that certain position
-         ctx.drawImage (fuel, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioHeight);
+         ctx.drawImage (fuel, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioWidth);
        }
        else if (resourcePrinted[i] == 4){ //if the generated number is 4 then stars are printed in that certian position
-         ctx.drawImage (stars, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioHeight);
+         ctx.drawImage (stars, resourceX[i], resourceY[i], 100 * ratioWidth, 100 * ratioWidth);
        }
        draw = false;
      }

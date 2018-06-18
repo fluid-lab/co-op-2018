@@ -9,7 +9,7 @@ function checkResource(){
            xTriangle = 170 * ratioWidth - xTriangle;
            yTriangle = 20/(7/xTriangle);
        }
-       if(yTriangle + 150 * ratioHeight >= resourceY[i] && resourceY[i] >= 150 * ratioHeight){
+       if(yTriangle + 150 * ratioWidth >= resourceY[i] && resourceY[i] >= 150 * ratioWidth){
            if(resourceHidden[i] === "false"){
                if(resourcePrinted[i] === 1){ //if the resource number is 1 it adds to the number of iron collected
                    numOfIron++;
